@@ -1,130 +1,133 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-*
-{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body
-{
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: #151515;
+  padding: 20px;
 }
-.card
-{
+
+.card {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 90%;
+  max-width: 350px;
+  aspect-ratio: 1/1;
   border-radius: 20px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   transition: 0.5s;
-  transition-delay: 0.5s;
 }
-.card:hover
-{
-  width: 600px;
-  transition-delay: 0.5s;
+
+.card:hover {
+  max-width: 600px;
 }
-.card .circle
-{
+
+/* Circle */
+.card .circle {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card .circle::before
-{
+
+.card .circle::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 350px;
-  height: 350px;
+  inset: 0;
+  width: 80%;
+  aspect-ratio: 1/1;
+  margin: auto;
   border-radius: 50%;
   background: #191919;
   border: 8px solid var(--clr);
   filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
   transition: 0.5s, background 0.5s;
-  transition-delay: 0.75s,1s;
+  transition-delay: 0.75s, 1s;
 }
-.card:hover .circle::before
-{
+
+.card:hover .circle::before {
   transition-delay: 0.5s;
   width: 100%;
   height: 100%;
   border-radius: 20px;
   background: var(--clr);
 }
-.card .circle .logo
-{
+
+/* Logo */
+.card .circle .logo {
   position: relative;
-  width: 250px;
+  width: 60%;
   transition: 0.5s;
   transition-delay: 0.5s;
 }
-.card:hover .circle .logo
-{
-  transform: scale(0);  
+
+.card:hover .circle .logo {
+  transform: scale(0);
   transition-delay: 0;
 }
-.card .product_img
-{
+
+/* Produto */
+.card .product_img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%) scale(0) rotate(315deg);
-  height: 300px;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  max-height: 70%;
   transition: 0.5s ease-in-out;
 }
-.card:hover .product_img
-{
+
+
+.card:hover .product_img {
   transition-delay: 0.75s;
   top: 25%;
   left: 72%;
-  height: 500px;
-  transform: translate(-50%,-50%) scale(1) rotate(15deg);
+  max-height: 90%;
+  transform: translate(-50%, -50%) scale(1) rotate(15deg);
 }
-.card .content
-{
+
+/* Conteúdo */
+.card .content {
   position: absolute;
   width: 50%;
   left: 20%;
-  padding: 20px 20px 20px 40px;
+  padding: 20px;
   opacity: 0;
   transition: 0.5s;
   visibility: hidden;
 }
-.card:hover .content
-{
+
+.card:hover .content {
   transition-delay: 0.75s;
   opacity: 1;
   visibility: visible;
-  left: 20px;
+  left: 5%;
 }
-.card .content h2
-{
+
+.card .content h2 {
   color: #fff;
   text-transform: uppercase;
-  font-size: 2.5em;
-  line-height: 1em;
+  font-size: clamp(1.5rem, 2.5vw, 2.5em);
+  line-height: 1.2em;
 }
-.card .content p
-{
+
+.card .content p {
   color: #fff;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
-.card .content a
-{
+
+.card .content a {
   position: relative;
   color: #111;
   background: #fff;
@@ -134,4 +137,23 @@ body
   text-decoration: none;
   font-weight: 600;
   margin-top: 10px;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+/* 🔹 Responsividade extra */
+@media (max-width: 768px) {
+  .card:hover {
+    max-width: 90%;
+  }
+  .card .product_img {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9) rotate(10deg);
+  }
+  .card .content {
+    width: 100%;
+    left: 0;
+    text-align: center;
+    padding: 10px;
+  }
 }
